@@ -1,0 +1,111 @@
+@charset "UTF-8"
+/*!
+  Developer: dzendev@gmail.com
+
+  Организация кода:
+  SMACSS - Scalable and Modular Architecture for CSS
+  (масштабируемая и модульная архитектура для CSS)
+  https://smacss.com
+
+  Стили разбиты на 5 категорий:
+  1. Base
+  	1.1 Normalize.css
+  	1.2 Mixins
+  2. Theme
+  	2.1 Load font
+  	2.2 Typography
+  	2.3 Link
+  	2.4 Table
+  	2.5 Var
+  3. Layout
+    3.1 layout
+    3.2 Page
+  4. Modules
+  	4.1 .form
+  	4.2 .btn
+  	4.3 .nav
+  	...
+  5. State
+  	5.1 state element
+*/
+/*!
+*==================================================================
+  Base — базовые стили.
+  - Сброс стилей
+  - Задаются стили основных элементов body, input, table, ul, ol и т.п.
+  - Используются в основном селекторы элементов.
+  - Не используется вложенность.
+  - Функции для препроцессоров.
+*==================================================================
+*/
+@import 'base/_mixins.styl'
+@import "../../node_modules/normalize.css/normalize.css"
+@import "base/base-selector.styl"
+@import "base/base-class.styl"
+/*!
+*==================================================================
+  Theme — стили оформления.
+  - Задаются цвета, фон и шрифты - аналог темы для редактора
+  - Переменные для препроцессоров, которые могут быть использованы модулями
+  - Подгружаемые шрифты
+  - (.t-) - классы для тем body.t-default
+*==================================================================
+*/
+@import "theme/default.styl"
+@import "theme/print.styl"
+/*!
+*==================================================================
+  Layout — стили макета.
+  - Задаются размеры, расположение шапки футера, сайдбара и т.д.
+  - Задаётся сетка и её поведение при изменении размера окна браузера
+  - Можно использовать id.
+  - (.l-) - классы для сетки
+  - Допускается каскадность
+*==================================================================
+*/
+@import "layout/layout.styl"
+@import "layout/page.styl"
+/*!
+*==================================================================
+  Modules — стили модулей.
+  - Задаются стили для отдельных многократно используемых кусков кода
+  - Не рекомендуется исползовать id, селекторы и каскадность
+  - (.module) - названия классов должны быть семантическими.
+  - (.module-element) - если надо использвать класс, то он должен
+  начинаться с названия модуля
+  - Допускается каскадность
+*==================================================================
+*/
+@import "modules/nav.styl" // навигация
+@import "modules/hamburger.styl" // переключатель меню
+@import "modules/breadcrumb.styl" // хлебные крошки
+@import "modules/pagination.styl" // постраничная навигация
+@import "modules/tab.styl" // табуляция
+@import "modules/btn.styl" // кнопки
+@import "modules/form.styl" // поля форм
+// @import "modules/form-group.styl" // группирование полей формы
+@import "modules/switch.styl" // переключатели
+@import "modules/loader.styl" // прелоадер
+@import "modules/tooltip.styl" // всплывающая подсказка
+@import "modules/callout.styl" // выноска, заметка
+@import "modules/jumbotron.styl" // основное содержимое сайта
+@import "modules/alert.styl" // предупредения
+@import "modules/slider.styl" // слайдер slick
+@import "modules/slick.css" // слайдер slick
+@import "modules/slick-theme.css" // слайдер slick
+@import "../../node_modules/font-awesome/css/font-awesome.css" // иконочный шрифт font-awesome
+@import "modules/socicons.styl" // иконки из font-awesom
+@import "modules/icon.styl" // png sprite иконки
+@import "modules/_iconfont.css" // svg изображения переделанные в шрифт
+// @import "modules/css/sprite.css" // svg sprite
+@import "modules/iconsvg.styl" // svg sprite
+@import "modules/arrow.styl" // стрелки на css
+@import "modules/progress.styl" // прогресс
+/*!
+*==================================================================
+  State — стили состояния.
+  - Задаётся состояние модулей и скелета сайта
+  - (.is-) - состояние html элемента. Абстрактные классы, стили задаются задаются в других местах
+*==================================================================
+*/
+@import "state/is.styl"

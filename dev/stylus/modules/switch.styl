@@ -1,0 +1,46 @@
+/*!-----------------------------------------------------------------
+	.switch - модуль кастомных checkbox и radio
+ -----------------------------------------------------------------*/
+.switch
+	position: relative
+	display: flex
+	align-items center
+	height: 34px
+	margin-bottom 15px
+	input
+		display none
+		&:checked + ^[0]__slider
+			background-color: #2196F3
+		&:checked + ^[0]__slider:before
+			transform: translateX(26px)
+		&:focus + ^[0]__slider
+			box-shadow: 0 0 1px #2196F3
+	input[type="radio"]
+		&:checked + ^[0]__slider
+		&:checked ~ ^[0]__text
+			cursor default
+
+	&__slider
+		width: 60px
+		height 34px
+		cursor: pointer
+		background-color: #ccc
+		transition: .4s
+		&:before
+			width: 60px
+			position: absolute
+			content: ""
+			height: 26px
+			width: 26px
+			left: 4px
+			bottom: 4px
+			background-color: #fff
+			transition: .4s
+		&.t-secondary
+			border-radius: 34px
+			&:before
+				border-radius: 50%
+	&__text
+		display block
+		padding-left 10px
+		cursor pointer

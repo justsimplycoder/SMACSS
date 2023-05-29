@@ -1,0 +1,25 @@
+//- .nav - модуль навигации
+mixin nav(items)
+	nav.nav
+		each item in items
+			if item.active == true
+				a(href=item.link class="nav__link is-active")= item.name
+			else
+				a(href=item.link class="nav__link")= item.name
+	// /nav.nav
+
+//- .breadcrumb - модуль хлебные крошки
+mixin breadcrumb(breadcrumbs)
+	nav.breadcrumb
+		ul
+			each breadcrumb in breadcrumbs
+				if  breadcrumb.url
+					li: a(href=breadcrumb.url) #{breadcrumb.name}
+				else
+					li #{breadcrumb.name}
+
+//- .iconsvg - модуль svg sprite
+mixin iconsvg(iconName, state)
+	svg.iconsvg(class="iconsvg-" + iconName, class=state ? state: '')
+		use(xlink:href="#iconsvg-"  + iconName)
+

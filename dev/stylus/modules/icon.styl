@@ -1,0 +1,30 @@
+@import '_sprite.styl'
+
+/*!-----------------------------------------------------------------
+  .icon - модуль png иконки
+ -----------------------------------------------------------------*/
+spriteIcon($sprite)
+	background-position: $sprite[2] $sprite[3]
+	background-image: url($sprite[8])
+	width: $sprite[4]
+	height: $sprite[5]
+
+spriteIconHover($sprite)
+	background-position: $sprite[2] $sprite[3]
+
+spritesIcon($sprites)
+	for $sprite in $sprites
+		$sprite_name = $sprite[9]
+		if match('__hover', $sprite_name)
+			$sprite_name = replace('__hover', ':hover', $sprite_name)
+			.icon-{$sprite_name}
+				spriteIconHover($sprite)
+		else
+			.icon-{$sprite_name}
+				spriteIcon($sprite)
+
+.icon
+	display inline-block
+	vertical-align middle
+
+spritesIcon($spritesheet_sprites)

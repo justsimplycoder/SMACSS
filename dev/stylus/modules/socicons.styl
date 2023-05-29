@@ -1,0 +1,32 @@
+/*!-----------------------------------------------------------------
+  .socicons - модуль социальных иконок взятых из font-awesome
+ -----------------------------------------------------------------*/
+
+// Необходимые иконки нужно подключить font-awesome-optimization.styl
+.socicons
+  font-size 3rem
+  margin-right 15px
+  text-decoration none
+  transition color 200ms linear
+  &:hover
+    text-decoration none
+  &.fa-vk
+    color colorVk = #45668e
+    &:hover
+      color darken(colorVk, 10)
+  &.fa-facebook
+    color colorFa = #3b5998
+    &:hover
+      color darken(colorFa, 10)
+  &.fa-twitter
+    color colorTwitter = #55acee
+    &:hover
+      color darken(colorTwitter, 10)
+  &.fa-github
+    color colorGithub = #666666
+    &:hover
+      color darken(colorGithub, 10)
+  &.fa-skype
+    color colorSkype = #00aff0
+    &:hover
+      color darken(colorSkype, 10)

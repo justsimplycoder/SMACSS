@@ -1,0 +1,46 @@
+/*!-----------------------------------------------------------------
+	.alert - модуль предупреждений
+ -----------------------------------------------------------------*/
+.alert
+	padding: .75rem 2rem .75rem 1.25rem
+	margin-bottom: 1rem
+	border: 1px solid #000
+	border-radius: var(--borderRadius)
+	position: relative
+	color: #000
+	transition: opacity .4s
+	> .alert__close
+		color #000
+		cursor: pointer
+		position absolute
+		transform-style: preserve-3d
+		top: 50%
+		right 1rem
+		transform: translate(0%, -50%)
+	&.t-hide
+		opacity 0
+	&.t-success
+		background-color: var(--bgColor)
+		border-color: var(--borderColor)
+		color: var(--color)
+		.alert__close
+			color var(--borderColor)
+	&.t-info
+		background-color: var(--bgColor)
+		border-color: var(--borderColor)
+		color: var(--color)
+		.alert__close
+			color var(--borderColor)
+	&.t-warning
+		background-color: var(--bgColor)
+		border-color: var(--borderColor)
+		color: var(--color)
+		.alert__close
+			color var(--borderColor)
+	&.t-danger
+		background-color: var(--bgColor)
+		border-color: var(--borderColor)
+		color: var(--color)
+		.alert__close
+			color var(--borderColor)
+

@@ -1,0 +1,13 @@
+/*!-----------------------------------------------------------------
+  .hamburger - модуль показа меню на маленьких экранах
+ -----------------------------------------------------------------*/
+.hamburger
+	font-size 1.7rem !important
+	color #fff
+	cursor pointer
+	position fixed
+	z-index 2
+	&.fa
+		display none
+		+mema(sizeMedium)
+			display inline-block

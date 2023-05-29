@@ -1,0 +1,77 @@
+/*
+ * clearfix.css
+ */
+clearFix()
+	&:after
+	&:before
+		content ""
+		display table
+	&:after
+		clear both
+/*
+ * Подключение шрифтов
+ */
+fontFace(fontFamily)
+	@font-face
+		font-family fontFamily
+		src url("../fonts/" + fontFamily + "/" + fontFamily + ".eot")
+		src url("../fonts/" + fontFamily + "/" + fontFamily + ".eot?#iefix")format("embedded-opentype"),
+		url("../fonts/" + fontFamily + "/" + fontFamily + ".woff") format("woff"),
+		url("../fonts/" + fontFamily + "/" + fontFamily + ".ttf") format("truetype")
+		font-style normal
+		font-weight normal
+/*
+ * Размер шрифта
+ * Если не задан размер вычисляем относительный размер
+ */
+// font-size(size)
+// 	if unit(size) == ''
+// 		font-size (size / themeDefaultBazeFontSize)rem
+// 	else
+// 		font-size size
+/*
+ * Перечисление классов с модификтором .col-$ -> .col-1, .col-2...
+ */
+joinClassName(ClassName, args)
+	buf = ''
+	for arg, index in (1..args)
+		if index
+			buf += ', ' + ClassName + arg
+		else
+			buf += ClassName + arg
+	return buf
+/*
+ * Задание width и height
+ * size 40px -> width 40px height 40px
+ * size 40px 60px -> width 40px height 60px
+ */
+size(width, height=width)
+	width width
+	height height
+/*
+ * Работа с @media
+*/
+memi(minWidth)
+	if (typeof(minWidth) == 'string')
+		minWidth = convert(minWidth)
+	@media screen and (min-width: minWidth)
+		{block}
+
+mema(maxWidth)
+	if (typeof(maxWidth) == 'string')
+		maxWidth = convert(maxWidth)
+	@media screen and (max-width: maxWidth)
+		{block}
+
+memima(minWidth, maxWidth)
+	if (typeof(minWidth) == 'string')
+		minWidth = convert(minWidth)
+	if (typeof(maxWidth) == 'string')
+		maxWidth = convert(maxWidth)
+	@media screen and (min-width: minWidth) and (max-width: maxWidth)
+		{block}
+
+meretina(dpr)
+	@media (-webkit-min-device-pixel-ratio: dpr), (min-resolution: (dpr * 96)dpi)
+		{block}
+

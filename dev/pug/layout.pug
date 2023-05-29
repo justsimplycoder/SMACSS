@@ -1,0 +1,50 @@
+//- include _mixins.pug
+include _modules.pug
+include _variable.pug
+doctype html
+html(lang="ru")
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="description", content="")
+		meta(name="viewport", content="width=device-width,initial-scale=1")
+		// build:css
+		link(rel="preconnect" href="https://fonts.gstatic.com")
+		link(href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet")
+		link(rel="stylesheet", href="/css/main.css")
+		// endbuild
+		block title
+			title SMACSS
+
+		block top-script
+
+	body
+		header#l-header
+			#l-header-menu
+				.l-page-width
+					+nav(nav)
+					span.hamburger.fa.fa-bars
+			#l-header-title
+				.l-page-width
+					a(href="/")
+						img(src="/img/jack-head.png", alt="smacss site")
+					div
+						h2 SMACSS — масштабируемая и модульная архитектура CSS
+						p Создание сайтов малых и средних размеров.
+		// /header#l-header
+
+		#l-content
+			.l-page-width
+				block content
+		// /#l-content
+
+		footer#l-footer
+			.l-page-width.b-text-center(style="display:block") Copyright <a href="https://github.com/dzendev/smacss.git">Dzendev GitHub</a>
+		// /footer#l-footer
+
+		block bottom-script
+			script(src="/js/jquery.min.js")
+			script(src="/js/slick.min.js")
+			// build:js
+			script(src="/js/script.js" type="module")
+			// endbuild

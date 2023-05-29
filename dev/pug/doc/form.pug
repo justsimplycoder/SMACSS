@@ -1,0 +1,206 @@
+extends layout.pug
+
+block content
+	.l-wrap-2
+		h1 Формы и кнопки
+	.container
+		div(style="max-width:600px;")
+			form.form
+				fieldset
+					legend Обычная форма
+					.form__wrap
+						label(for='exampleinputemail1') Почта
+						input#exampleinputemail1.form__control(type='email', placeholder='email')
+					.form__wrap
+						label Email
+						p.form__text email@example.com
+					.form__wrap
+						label(for='exampleinputpassword1') Пароль
+						input#exampleinputpassword1.form__control(type='password', placeholder='пароль')
+						p.form__help Пароль только латинские буквы
+					.form__wrap
+						label(for='exampleinputfile') Загрузка файла
+						input#exampleinputfile(type='file')
+					.form__wrap
+						label(for='exampleTextarea') Ваше сообщение
+						textarea.form__control(rows='3')#exampleTextarea
+					.form__check
+						label
+							input(type='checkbox', checked)
+							| включенный checkbox
+					.form__check
+						label
+							input(type='checkbox', value='')
+							| невключенный checkbox
+					.form__check.is-disabled
+						label
+							input(type='checkbox', value='', disabled='')
+							| неактивный checkbox
+					.form__check
+						label
+							input#optionsRadios1(type='radio', name='optionsRadios', value='option1', checked='')
+							| включенный radio
+					.form__check
+						label
+							input#optionsRadios2(type='radio', name='optionsRadios', value='option2')
+							| невключенный radio
+					.form__check.is-disabled
+						label
+							input#optionsRadios3(type='radio', name='optionsRadios', value='option3', disabled='')
+							| неактивный radio
+					.form__wrap
+						p checkbox в линию:&nbsp;
+						label.form__check.is-inline
+							input#inlineCheckbox1(type='checkbox', value='option1')
+							| 1
+						label.form__check.is-inline
+							input#inlineCheckbox2(type='checkbox', value='option2')
+							| 2
+						label.form__check.is-inline
+							input#inlineCheckbox3(type='checkbox', value='option3')
+							| 3
+					.form__wrap
+						p radio в линию:&nbsp;
+						label.form__check.is-inline
+							input#inlineRadio1(type='radio', name='inlineRadioOptions', value='option1')
+							| 1
+						label.form__check.is-inline
+							input#inlineRadio2(type='radio', name='inlineRadioOptions', value='option2')
+							| 2
+						label.form__check.is-inline
+							input#inlineRadio3(type='radio', name='inlineRadioOptions', value='option3')
+							| 3
+					.form__wrap
+						select.form__control
+							option 1
+							option 2
+							option 3
+							option 4
+							option 5
+					.form__wrap
+						select(multiple).form__control
+							option 1
+							option 2
+							option 3
+							option 4
+							option 5
+					button.btn(type='submit') Submit
+			br
+			br
+			form.form
+				fieldset(disabled='')
+					legend Неактивная форма
+					.form__wrap
+						label(for='disabledtextinput') disabled input
+						input#disabledtextinput.form__control(type='text', placeholder='disabled input')
+					.form__wrap
+						label(for='disabledselect') disabled select menu
+						select#disabledselect.form__control
+							option disabled select
+					.form__check
+						label
+							input(type='checkbox')
+							| can&apos;t check this
+					button.btn(type='submit') submit
+			br
+			br
+			form.form
+				fieldset
+					legend Горизонтальная форма
+					.form__wrap
+						label(for='inputEmail3') Email
+						input#inputEmail3.form__control(type='email', placeholder='Email')
+					.form__wrap
+						label(for='inputPassword3') Password
+						input#inputPassword3.form__control(type='password', placeholder='Password')
+
+					.form__wrap
+						button.btn(type='submit') Sign in
+			br
+			br
+			form.form
+				fieldset
+					legend Группировка элементов формы в одну линию
+					.form__wrap
+						.form__group
+							input#exampleinputamount.form__control(type='text', placeholder='сумма')
+							button.btn.is-primary(type='submit') высчитать
+					.form__wrap
+						.form__group
+							label(for='exmp1' class="form__text") ₽
+							input(id="exmp1" class="form__control" type="text" placeholder="сумма")
+							.form__text .00
+							.form__text руб.
+		div
+			h2 .btn
+			div(style="padding-bottom:20px;")
+				p: button.btn Кнопка &lt;button&gt;
+				p: a.btn Кнопка &lt;a&gt;
+		div
+			h2 .switch — модуль кастомных checkbox и radio
+
+			h3 input[type="checkbox"]
+
+			label.switch
+				input(type='checkbox', value="checkbox1")
+				.switch__slider
+				span.switch__text checkbox1
+			label.switch
+				input(type='checkbox', checked='', value="checkbox2")
+				.switch__slider
+				span.switch__text checkbox2
+			label.switch
+				input(type='checkbox', value="checkbox3")
+				.switch__slider.t-secondary
+			label.switch
+				input(type='checkbox', checked='', value="checkbox4")
+				.switch__slider.t-secondary
+
+			div.l-inline-switch
+				label.switch
+					input(type='checkbox', value="checkbox1")
+					.switch__slider
+					span.switch__text checkbox1
+				label.switch
+					input(type='checkbox', checked='', value="checkbox2")
+					.switch__slider
+					span.switch__text checkbox2
+				label.switch
+					input(type='checkbox', value="checkbox3")
+					.switch__slider.t-secondary
+				label.switch
+					input(type='checkbox', checked='', value="checkbox4")
+					.switch__slider.t-secondary
+
+			h3 input[type="radio"]
+
+			label.switch
+				input(type='radio', value="radio1", name="radio_group1")
+				.switch__slider
+				span.switch__text radio_group1 radio1
+			label.switch
+				input(type='radio', checked, value="radio2", name="radio_group1")
+				.switch__slider
+				span.switch__text radio_group1 radio2
+			label.switch
+				input(type='radio', value="radio1", name="radio_group2")
+				.switch__slider.t-secondary
+			label.switch
+				input(type='radio', checked, value="radio2", name="radio_group2")
+				.switch__slider.t-secondary
+
+			div.l-inline-switch
+				label.switch
+					input(type='radio', value="radio1", name="radio_group3")
+					.switch__slider
+					span.switch__text radio_group3 radio1
+				label.switch
+					input(type='radio', checked, value="radio2", name="radio_group3")
+					.switch__slider
+					span.switch__text radio_group3 radio2
+				label.switch
+					input(type='radio', value="radio1", name="radio_group4")
+					.switch__slider.t-secondary
+				label.switch
+					input(type='radio', checked, value="radio2", name="radio_group4")
+					.switch__slider.t-secondary

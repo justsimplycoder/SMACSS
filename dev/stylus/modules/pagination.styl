@@ -1,0 +1,36 @@
+/*!-----------------------------------------------------------------
+  .pagination - модуль постраничная навигация
+ -----------------------------------------------------------------*/
+.pagination
+	text-align center
+	padding: 5px 0
+	> a
+		position: relative
+		display inline-block
+		padding: .5rem .75rem
+		margin-left: -1px
+		line-height: 1.25
+		color: themeDefaultLinkColor
+		background-color: #fff
+		border: 1px solid #ddd
+		text-decoration: none
+		&:hover
+			color: #014c8c
+			background-color: #eceeef
+			border-color: #ddd
+		&:first-child
+			border-bottom-left-radius: themeDefaultBorderRadius
+			border-top-left-radius: themeDefaultBorderRadius
+		&:last-child
+			border-bottom-right-radius: themeDefaultBorderRadius
+			border-top-right-radius: themeDefaultBorderRadius
+		&.is-active
+			background-color themeDefaultIsActiveBg
+			border-color themeDefaultIsActiveBg
+			color: themeDefaultIsActiveColor
+		&.is-disabled
+			color: #636c72
+			pointer-events: none
+			cursor: not-allowed
+			background-color: #fff
+			border-color: #ddd

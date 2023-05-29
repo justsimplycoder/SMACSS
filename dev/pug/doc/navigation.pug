@@ -1,0 +1,55 @@
+extends layout.pug
+
+block content
+	h1 Навигация по сайту
+
+	h3 Модуль пагинации
+
+	nav.pagination
+		a(href="prev").is-disabled Previous
+		a(href="1").is-active 1
+		a(href="2") 2
+		a(href="3") 3
+		a(href="next") Next
+
+	h3 Модуль табы
+
+	.tab
+		ul.tab__links
+			li.tab__item.is-active(data-show-content="0") London
+			li.tab__item(data-show-content="1") Paris
+			li.tab__item(data-show-content="2") Tokyo
+			li.tab__item(data-show-content="3") Moscow
+		.tab__content.is-show
+			h4 London
+			p London is the capital city of England.
+		.tab__content
+			h4 Paris
+			p Paris is the capital city of France.
+			p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa alias, unde dicta placeat error expedita laborum quidem provident nemo a impedit animi distinctio pariatur maiores voluptatibus cupiditate, eligendi eos dolor vitae tenetur accusamus? Quae impedit sit architecto blanditiis, expedita magni.
+		.tab__content
+			h4 Tokyo
+			p Tokyo is the capital city of Japan.
+		.tab__content
+			h4 Moscow
+			p Moscow is the capital city of Russia.
+
+	.tab
+		ul.tab__links
+			li.tab__item.is-active(data-show-content="0") Лондон
+			li.tab__item(data-show-content="1") Париж
+			li.tab__item(data-show-content="2") Токи
+			li.tab__item(data-show-content="3") Москва
+		.tab__content.is-show
+			h4 London
+			p London is the capital city of England.
+		.tab__content
+			h4 Paris
+			p Paris is the capital city of France.
+			p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa alias, unde dicta placeat error expedita laborum quidem provident nemo a impedit animi distinctio pariatur maiores voluptatibus cupiditate, eligendi eos dolor vitae tenetur accusamus? Quae impedit sit architecto blanditiis, expedita magni.
+		.tab__content
+			h4 Tokyo
+			p Tokyo is the capital city of Japan.
+		.tab__content
+			h4 Moscow
+			p Moscow is the capital city of Russia.

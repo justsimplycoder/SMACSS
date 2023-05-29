@@ -1,0 +1,19 @@
+/*!-----------------------------------------------------------------
+	"selector" — общие селекторы для всего сайта
+ -----------------------------------------------------------------*/
+// debug()
+*
+*:before
+*:after
+	box-sizing border-box
+// прижатый футер к низу
+html
+	scroll-behavior: smooth
+html, body
+	height: 100%
+body
+	display: flex
+	min-height: 100vh
+	// исправление возможного бага с прижатым футером в мобильной версии
+	min-height: -webkit-fill-available
+	flex-direction: column

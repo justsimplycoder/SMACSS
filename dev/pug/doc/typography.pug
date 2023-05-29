@@ -1,0 +1,67 @@
+extends layout.pug
+
+block content
+
+	h2 Заголовки
+	h1 Заголовок первого уровня <small>уменьшенный текст</small>
+	h2 Заголовок второго уровня <small>уменьшенный текст</small>
+	h3 Заголовок третьего уровня <small>уменьшенный текст</small>
+	h4 Заголовок четвёртого уровня <small>уменьшенный текст</small>
+	h5 Заголовок пятого уровня <small>уменьшенный текст</small>
+	h6 Заголовок шевтого уровня <small>уменьшенный текст</small>
+
+	h2 Абзацы
+	p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore optio magnam, eos officiis dolores eius similique saepe unde beatae quis. Corrupti incidunt porro officiis repellat, autem facere amet esse ducimus et deleniti adipisci reprehenderit ea! Consectetur voluptatem quidem nihil ratione.
+	p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit fugiat porro tempore odio, molestias velit ab vitae necessitatibus accusamus rerum neque cum atque natus, nisi aspernatur placeat distinctio saepe delectus!
+	<p>Станислав Лец утверждал: <q>Чаще всего выход там, где был вход</q>.</p>
+
+	h2 Списки
+	ul
+		li Lorem ipsum dolor sit amet.
+		li Lorem ipsum dolor sit amet.
+		li Lorem ipsum dolor sit amet.
+			ul
+				li Lorem ipsum dolor sit amet, consectetur.
+				li Lorem ipsum dolor sit amet, consectetur.
+				li Lorem ipsum dolor sit amet, consectetur.
+		li Lorem ipsum dolor sit amet.
+	ol
+		li Lorem ipsum dolor sit amet.
+		li Lorem ipsum dolor sit amet.
+		li Lorem ipsum dolor sit amet.
+			ol
+				li Lorem ipsum dolor sit amet, consectetur.
+				li Lorem ipsum dolor sit amet, consectetur.
+				li Lorem ipsum dolor sit amet, consectetur.
+		li Lorem ipsum dolor sit amet.
+
+	h2 Таблица
+	table
+		<caption>Таблица размеров обуви</caption>
+		thead
+			tr
+				th #
+				th Название товара
+				th Категория
+				th Цена
+		tbody
+			tr
+				td(data-label="#") 1
+				td(data-label="Название товара") Шлёпки оранжевые
+				td(data-label="Категория") Обувь
+				td(data-label="Цена") 900₽
+			tr
+				td(data-label="#") 2
+				td(data-label="Название товара") Швабра
+				td(data-label="Категория") Товары для дома
+				td(data-label="Цена") 700₽
+			tr
+				td(data-label="#") 3
+				td(data-label="Название товара") Кастрюля
+				td(data-label="Категория") Посуда
+				td(data-label="Цена") 1200₽
+			tr
+		tfoot
+			tr
+				td(colspan="3" class="b-text-right b-text-bold b-text-upper") Всего:
+				td 2800₽

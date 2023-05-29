@@ -1,0 +1,37 @@
+/*!-----------------------------------------------------------------
+  .tab - модуль табуляция
+ -----------------------------------------------------------------*/
+$tabPad = 0.9375em
+.tab
+	border: 1px solid #ddd
+	border-radius: $tabBorderRadius = .35rem
+	margin-bottom 2em
+	ul.tab__links
+		border-top-left-radius: $tabBorderRadius
+		border-top-right-radius: $tabBorderRadius
+		overflow hidden
+		font-size: 1.125em
+		margin: 0
+		padding: 0
+		list-style: none
+		display flex
+		background: #f1f1f1
+		li
+			padding: 10px $tabPad
+			transition: 0.3s
+			&:hover
+				background-color: #949494
+				cursor pointer
+			&.is-active
+				background-color: var(--bgColor)
+				color var(--colorWhite)
+	.tab__content
+		transition: opacity 0.5s linear
+		padding: 0
+		height: 0
+		overflow: hidden
+		opacity: 0
+		&.is-show
+			padding: 0 $tabPad 0.3125em
+			opacity 1
+			height: auto

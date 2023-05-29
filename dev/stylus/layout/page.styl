@@ -1,0 +1,45 @@
+/*!-----------------------------------------------------------------
+  Стили для страниц
+ -----------------------------------------------------------------*/
+/*!-----------------------------------------------------------------
+	index.pug
+ -----------------------------------------------------------------*/
+/*!-----------------------------------------------------------------
+	form.pug
+ -----------------------------------------------------------------*/
+.l-btn-group
+	display flex
+	width 100%
+	> .btn
+		border-radius: 0
+		margin-right 0
+		&:first-child
+			border-top-left-radius var(--borderRadius)
+			border-bottom-left-radius var(--borderRadius)
+		&:last-child
+			border-top-right-radius var(--borderRadius)
+			border-bottom-right-radius var(--borderRadius)
+	&.t-inline > .btn
+		flex 1 1 auto
+	+mema(sizeSmall)
+		flex-direction column
+		> .btn
+			&:first-child
+				border-top-left-radius var(--borderRadius)
+				border-top-right-radius var(--borderRadius)
+				border-bottom-left-radius 0
+			&:last-child
+				border-top-right-radius 0
+				border-bottom-left-radius var(--borderRadius)
+				border-bottom-right-radius var(--borderRadius)
+.l-inline-switch
+	display flex
+	> .switch
+		margin 0 10px 0 0
+
+/*!-----------------------------------------------------------------
+	404.pug
+ -----------------------------------------------------------------*/
+.l-page-404
+	font-size: 3.5rem
+	font-weight: 600

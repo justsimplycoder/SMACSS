@@ -1,0 +1,52 @@
+mixin imgResponsive(image, alt='', dpr=[1, 2], webp=true)
+	-let [basename, extname] = image.split('.')
+	picture
+		source(
+			media=`(max-width: ${sizeSmall})`
+			type="image/webp"
+			srcset= dpr.map(size => `/img/retina/${basename}-small.${size}x.webp ${size}x`).join(', ')
+		)
+		source(
+			media=`(max-width: ${sizeSmall})`
+			srcset= dpr.map(size => `/img/retina/${basename}-small.${size}x.${extname} ${size}x`).join(', ')
+		)
+		source(
+			media=`(max-width: ${sizeMedium})`
+			type="image/webp"
+			srcset= dpr.map(size => `/img/retina/${basename}-medium.${size}x.webp ${size}x`).join(', ')
+		)
+		source(
+			media=`(max-width: ${sizeMedium})`
+			srcset= dpr.map(size => `/img/retina/${basename}-medium.${size}x.${extname} ${size}x`).join(', ')
+		)
+		source(
+			type="image/webp"
+			srcset= dpr.map(size => `/img/retina/${basename}.${size}x.webp ${size}x`).join(', ')
+		)
+		img(
+			alt= alt
+			src=`/img/retina/${basename + '.1x.' + extname}`
+			srcset= dpr.map(size => `/img/retina/${basename}.${size}x.${extname} ${size}x`).join(', ')
+		)
+// imgRetina - mixin для вставки ретина изображений
+mixin imgRetina(image, alt='', dpr=[1, 2])
+	-let [basename, extname] = image.split('.')
+	picture
+		source(
+			type="image/webp"
+			srcset= dpr.map(size => `/img/retina/${basename}.${size}x.webp ${size}x`).join(', ')
+				)
+		img(
+			alt= alt
+			src=`/img/retina/${basename + '.1x.' + extname}`
+			srcset= dpr.map(size => `/img/retina/${basename}.${size}x.${extname} ${size}x`).join(', ')
+		)
+
+//- вставить svg изображение из url или по id
+mixin svg(svg_url, svg_id)
+	if svg_id
+		svg()&attributes(attributes)
+			use(xlink:href= svg_url + '#' + svg_id)
+	else
+		svg()&attributes(attributes)
+			use(xlink:href= svg_url)

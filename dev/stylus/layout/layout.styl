@@ -1,0 +1,71 @@
+/*!-----------------------------------------------------------------
+	layout.pug - базовый шаблон
+ -----------------------------------------------------------------*/
+// прижатый футер к низу
+html, body
+	height: 100%
+body
+	display: flex
+	min-height: 100vh
+	// исправление возможного бага с прижатым футером в мобильной версии
+	min-height: -webkit-fill-available
+	flex-direction: column
+	padding-bottom 0
+
+// отступ в центре страницы и максимальная ширина
+.l-page-width
+	padding 0 15px
+	max-width: 960px
+	margin: 0 auto
+
+#l-header
+	background-color rgba(51, 153, 204, 0.5)
+	&-menu
+		background-color: rgba(10, 31, 41, 0.8)
+		> .l-page-width
+			height 32px
+			+mema(sizeMedium)
+				display flex
+				align-items center
+				justify-content flex-end
+	&-title
+		padding 7px 0
+		> .l-page-width
+			display flex
+			justify-content flex-start
+			align-items center
+		img
+			margin-right: 20px
+		h2
+			font-size: 1.7rem
+			margin: 0 0 5px 0
+		p
+			font-size 1.3rem
+			font-style: italic
+	&-breadcrumb
+		background-color: var(--colorGray)
+
+#l-content
+	padding: 20px 0
+	flex: 1
+
+#l-footer
+	background-color var(--colorGray)
+	> .l-page-width
+		padding-top:15px
+		padding-bottom 15px
+		display flex
+		justify-content space-between
+
+// стрелка наверх
+#l-top-scroll
+	height 50px
+	width 50px
+	position fixed
+	bottom 50px
+	right 50px
+	background #000
+	color #fff
+	font-size: 40px
+	text-align center
+	line-height: 51px

@@ -1,0 +1,64 @@
+extends layout.pug
+
+block content
+	h1 Иконки
+
+	span.icon-svg.svg-wordpress
+	span.svg-font.svg-font-drupal(style="color:red;font-size:60px;")
+
+	h2 Модуль .icon - png icon
+	div
+		span.icon.icon-Char
+		| .icon.icon-Char
+	div
+		span.icon.icon-Mail
+		| .icon.icon-Mail
+	div
+		span.icon.icon-RU
+		| .icon.icon-RU
+	div
+		span.icon.icon-US
+		| .icon.icon-US
+
+	h2 Модуль .fa - font-awesome
+	div
+		i.fa.fa-vk
+		| .fa.fa-vk
+	div.
+		#[i.fa.fa-vk].fa.fa-vk
+
+	h2 Модуль .iconfont - svg icon to font
+	div
+		span.iconfont.iconfont-joomla
+		| .iconfont.iconfont-joomla
+	div
+		span.iconfont.iconfont-drupal
+		| .iconfont.iconfont-drupal
+
+	h2 Модуль .iconsvg - svg sprite
+	div
+		.callout.t-warning Для работы модуля нужно inline svg поместить в #{'<div style="display:none;"></div>'}
+		p
+			+iconsvg('js', 't-large')
+			| svg.iconsvg.iconsvg-js.t-large > use#js
+		p
+			+iconsvg('js')
+			| svg.iconsvg.iconsvg-js > use#js
+		p
+			+iconsvg('js', 't-small')
+			| svg.iconsvg.iconsvg-js.t-small > use#js
+
+	h2 Модуль CSS Arrows
+	div
+		p
+			| .arrow.is-right:
+			i.arrow.is-right
+		p
+			| .arrow.is-left:
+			i.arrow.is-left
+		p
+			| .arrow.is-up:
+			i.arrow.is-up
+		p
+			| .arrow.is-down:
+			i.arrow.is-down

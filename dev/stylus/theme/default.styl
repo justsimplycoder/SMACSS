@@ -1,0 +1,182 @@
+/*!
+ *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ * Theme
+ *+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*/
+/*!-----------------------------------------------------------------
+  Подключение локальных шрифтов шрифтов
+ -----------------------------------------------------------------*/
+fontFace(SegoeUIBold)
+fontFace(SegoeUIItalic)
+fontFace(SegoeUILight)
+fontFace(SegoeUIRegular)
+fontFace(SegoeUISemiBold)
+/*-----------------------------------------------------------------
+	Переменные.
+ -----------------------------------------------------------------*/
+:root
+	--colorWhite: #fff
+	--colorBlack: #000
+	--colorGray: #e3e6e8
+	--borderRadius: .25rem
+
+.t-success
+	--bgColor: #4CAF50
+	--bgColorHover: #46a049
+	--borderColor: #3c763d
+	--color: #001e00
+.t-info
+	--bgColor: #2196F3
+	--bgColorHover: #0b7dda
+	--borderColor: #1053a8
+	--color: #003351
+.t-warning
+	--bgColor: #ff9800
+	--bgColorHover: #ec9413
+	--borderColor: #b5520e
+	--color: #572d04
+.t-danger
+	--bgColor: #f44336
+	--bgColorHover: #da190b
+	--borderColor: #a94442
+	--color: #4a1716
+.t-secondary
+	--bgColor: #fff
+	--bgColorHover: #e6e6e6
+	--color: #292b2c
+	--borderColor: #ccc
+.t-primary
+.is-active
+	--bgColor: #0275d8
+	--bgColorHover: #01549b
+	--borderColor: #003351
+	--color: #fff
+/*!-----------------------------------------------------------------
+  Типографика
+ -----------------------------------------------------------------*/
+html
+	font-size 16px
+body
+	font-family: 'Roboto'\, sans-serif
+	color #000
+	line-height: 1.5em
+h1, h2, h3, h4, h5, h6
+	font-weight 500
+	line-height 1.1
+h1
+	font-size 2.25rem
+h2
+	font-size 1.875rem
+h3
+	font-size 1.5rem
+h4
+	font-size 1.125rem
+h5
+	font-size 0.875rem
+h6
+	font-size 0.75rem
+small
+	font-size 85%
+p
+	font-size 1rem
+	margin 0 0 10px
+	line-height 1.428
+ul
+	font-size 1rem
+	padding-left: $pl = 30px
+	padding-inline-start: $pl
+ol
+	padding-left: $pl = 18px
+	padding-inline-start: $pl
+	counter-reset: item
+	li
+		display: block
+		&:before
+			content: counters(item, ".") "."
+			counter-increment: item
+			position: relative
+			left: -5px
+abbr[title]
+	font-size 0.875rem
+	cursor help
+	border-bottom 1px dotted #777
+	text-decoration none
+address
+	font-size 0.875rem
+	font-style normal
+// html[lang="ru"] q
+// 	quotes: '«' '»'
+/*!-----------------------------------------------------------------
+  Ссылки
+ -----------------------------------------------------------------*/
+a
+	color #337ab7
+	text-decoration none
+	&:focus
+		color darken(@color, 35%)
+		text-decoration: underline
+	&:hover
+		color darken(@color, 35%)
+		text-decoration: underline
+/*!-----------------------------------------------------------------
+  Таблицы
+ -----------------------------------------------------------------*/
+table
+	background-color transparent
+	margin-bottom 20px
+	border-spacing 0
+	border-collapse collapse
+	width: 100%
+	max-width: 100%
+	caption
+		padding-bottom .2em
+		font-style italic
+	td, th
+		padding .4rem 0.75rem
+	td
+		border-bottom 1px solid var(--colorGray)
+	th
+		text-align left
+		font-weight bold
+	thead th
+		border 0
+		border-bottom 1px solid var(--colorBlack)
+	tfoot td
+		border 0
+		border-top 1px solid var(--colorBlack)
+	+mema(sizeMedium)
+		thead
+			display none
+		tbody
+			tr
+				margin-bottom: 10px
+				display: block
+				border-bottom: 1px solid var(--colorBlack)
+				width 100%
+				&:last-child
+					border-bottom 0
+			td
+				display: flex
+				justify-content: space-between
+				border-bottom: 1px solid var(--colorGray)
+				&:before
+					content: attr(data-label)
+					font-weight: bold
+		tfoot
+			tr
+				display flex
+				justify-content space-between
+			td
+				border 0
+				font-weight bold
+
+/*!-----------------------------------------------------------------
+  Адаптивные картинки
+ -----------------------------------------------------------------*/
+img
+	max-width 100%
+	height auto
+figcaption
+	font-size 14
+	text-align center
+	font-style: italic

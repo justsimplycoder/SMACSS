@@ -1,0 +1,34 @@
+/*!-----------------------------------------------------------------
+	.jumbotron - модуль для демонстрации ключевого содержимого сайта
+ -----------------------------------------------------------------*/
+.jumbotron
+	min-height: 280px
+	border-radius calc(2 * var(--borderRadius))
+	background-color #95c8e2
+	background-image url(/img/jumbotron.png)
+	background-position 10px 10px
+	background-size auto 100%
+	background-repeat no-repeat
+	padding 1.5em 2em 1em 29.4em
+	+mema(sizeLarge)
+		background-size contain
+		background-position center bottom
+		padding 1em 2em 230px 2em
+		text-align center
+		background-size 400px
+	+mema(sizeSmall)
+		background-size 360px
+		padding-bottom 170px
+	&__header
+		font-size 3rem
+		margin .4em 0 .4em 0
+		+mema(sizeSmall)
+			font-size 2em
+	&__text
+		font-size 2rem
+		margin 0 0 .5em 0
+		+mema(sizeSmall)
+			font-size 1.3em
+			margin-bottom .8em
+	&__link
+		// display inline-block
