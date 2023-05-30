@@ -128,7 +128,8 @@ async function spritePng() {
 				imgName: 'iconpng.png',
 				cssName: '_sprite.styl',
 				cssFormat: 'stylus',
-				imgPath: '../img/sprite/iconpng.png'
+				imgPath: '../img/sprite/iconpng.png',
+				styleTemplate: 'dev/stylus/modules/stylus.template.mustache'
 		}));
 		spriteData.img
 			.pipe(buffer())
