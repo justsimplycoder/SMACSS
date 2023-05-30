@@ -1,0 +1,53 @@
+// sizeSmall: "480px",
+// sizeMedium: "800px",
+// sizeLarge: "991px",
+// sizeExtraLarge: "1170px",
+// sizeHD: "1440px"
+
+@media screen and (max-width: 991px)
+	.jumbotron
+		background-size contain
+		background-position center bottom
+		padding 1em 2em 230px 2em
+		text-align center
+		background-size 400px
+
+@media screen and (max-width: 800px)
+	#l-header-menu
+		> .l-page-width
+			display flex
+			align-items center
+			justify-content flex-end
+		.hamburger.fa
+			display inline-block
+			background red
+			width 30px
+			height 30px
+	.nav__link
+		display none
+	.nav.is-show
+		.nav__link
+			margin .4em 0
+			display block
+
+@media screen and (max-width: 480px)
+	.l-btn-group
+		flex-direction column
+		> .btn
+			&:first-child
+				border-top-left-radius var(--borderRadius)
+				border-top-right-radius var(--borderRadius)
+				border-bottom-left-radius 0
+			&:last-child
+				border-top-right-radius 0
+				border-bottom-left-radius var(--borderRadius)
+				border-bottom-right-radius var(--borderRadius)
+	.jumbotron
+		background-size 360px
+		padding-bottom 170px
+		&__header
+			font-size 2em
+		&__text
+			font-size 1.3em
+			margin-bottom .8em
+
