@@ -19,8 +19,6 @@ import uncss from "gulp-uncss-sp";
 import glob from "glob";
 import babel from "gulp-babel";
 import uglify from "gulp-uglify";
-import iconfont from "gulp-iconfont";
-import iconfontCss from "gulp-iconfont-css";
 import webpack from 'webpack-stream';
 import browserSync from "browser-sync";
 const env              = process.env.NODE_ENV;
@@ -176,29 +174,6 @@ function spriteSvg() {
 		})
 }
 
-function svgToFont() {
-	const runTimestamp = Math.round(Date.now()/1000);
-	return gulp.src(['dev/img/iconfont/*.svg'])
-		.pipe(iconfontCss({
-			fontName: 'iconfont',
-			// path: 'app/assets/css/templates/_icons.scss',
-			targetPath: '../../dev/stylus/modules/_iconfont.css',
-			fontPath: '../fonts/',
-			cssClass: 'iconfont'
-		}))
-		.pipe(iconfont({
-			fontName: 'iconfont', // required
-			prependUnicode: true, // recommended option
-			formats: ['ttf', 'eot', 'woff', 'woff2', 'svg'], // default, 'woff2' and 'svg' are available
-			timestamp: runTimestamp, // recommended to get consistent builds when watching files
-		}))
-		//.on('glyphs', function(glyphs, options) {
-			// CSS templating, e.g.
-			//console.log(glyphs, options);
-		//})
-		.pipe(gulp.dest('build/fonts/'));
-}
-
 function fontBase64() {
 	return gulp.src(['dev/lib/fonts/*'])
 		.pipe(inlineFonts({ name: 'NairiNormal' }))
@@ -247,7 +222,7 @@ export function clear() {
 export const sprite = gulp.parallel(spritePng, spriteSvg);
 
 // созадние из svg шрифта и преобразование шрифта в base64
-export const font = gulp.parallel(svgToFont, fontBase64);
+export const font = gulp.parallel(fontBase64);
 
 // перемещение шрифтов и js библиотек
 export const move = gulp.parallel(moveFont, moveJs, moveCss, moveCssModules);
