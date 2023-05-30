@@ -32,7 +32,7 @@ const breakpoint = {
 	sizeHD: "1440px"
 };
 
-function moveFont() {
+async function moveFont() {
 	return gulp.src([
 			'dev/lib/fonts/*',
 			'./node_modules/slick-carousel/slick/fonts/*'
@@ -41,7 +41,7 @@ function moveFont() {
 		.pipe(gulp.dest('build/fonts'));
 }
 
-function moveJs() {
+async function moveJs() {
 	return gulp.src([
 			'dev/lib/js/*.js',
 			'./node_modules/jquery/dist/jquery.min.js',
@@ -53,7 +53,7 @@ function moveJs() {
 		.pipe(gulp.dest('build/js'));
 }
 
-function moveCssModules() {
+async function moveCssModules() {
 	return gulp.src([
 		'./node_modules/slick-carousel/slick/slick.css',
 		'./node_modules/slick-carousel/slick/slick-theme.css'
@@ -62,7 +62,7 @@ function moveCssModules() {
 	.pipe(gulp.dest('dev/stylus/modules'));
 }
 
-function moveCss() {
+async function moveCss() {
 	return gulp.src([
 		'./dev/lib/css/prism.css'
 	])
@@ -138,7 +138,7 @@ async function spritePng() {
 			.pipe(gulp.dest('dev/stylus/modules'));
 }
 
-function spriteSvg() {
+async function spriteSvg() {
 	return gulp.src('dev/img/iconsvg/*.svg')
 		.pipe(svgSprite({
 			shape: {
@@ -175,28 +175,28 @@ function spriteSvg() {
 
 function js() {
 	return (
-    gulp
-      .src("dev/js/**/*.js", { sourcemaps: true })
-      .pipe(plumberNotifier())
-      .pipe(babel({
+		gulp
+			.src("dev/js/**/*.js", { sourcemaps: true })
+			.pipe(plumberNotifier())
+			.pipe(babel({
 				"presets": [["@babel/preset-env", { modules: false }]],
 			}))
-			.pipe(pipeIf(env === "production", webpack({
-				entry: {
-					// app: ['babel-polyfill'],
-					app: './dev/js/script.js',
-					script: './dev/js/script.js'
-				},
-				mode: env,
-				output: {
-					filename: '[name].js',
-				}
-			})))
-      .pipe(pipeIf(env === "production", uglify()))
-      .pipe(pipeIf(env === "production", rename({ suffix: ".min" })))
-      .pipe(gulp.dest("build/js", { sourcemaps: true }))
-      .pipe(browserSync.reload({ stream: true }))
-  );
+			// .pipe(pipeIf(env === "production", webpack({
+			// 	entry: {
+			// 		// app: ['babel-polyfill'],
+			// 		app: './dev/js/script.js',
+			// 		script: './dev/js/script.js'
+			// 	},
+			// 	mode: env,
+			// 	output: {
+			// 		filename: '[name].js',
+			// 	}
+			// })))
+			.pipe(pipeIf(env === "production", uglify()))
+			.pipe(pipeIf(env === "production", rename({ suffix: ".min" })))
+			.pipe(gulp.dest("build/js", { sourcemaps: true }))
+			.pipe(browserSync.reload({ stream: true }))
+	);
 }
 
 function watch() {
@@ -214,21 +214,32 @@ export function clear() {
 // создание спрайтов png и svg
 export const sprite = gulp.parallel(spritePng, spriteSvg);
 
-// перемещение шрифтов и js библиотек
+// перемещение font, js, css
 export const move = gulp.parallel(moveFont, moveJs, moveCss, moveCssModules);
 
-// инициализация
-export const init = gulp.series(clear, gulp.parallel(sprite, move));
-
-const task = [
+const tasks = [
 	pugToHtml,
 	img,
-	// stylusToCss,
-	// js
+	stylusToCss,
+	js
 ];
 
-// компиляция проекта, сжатие файлов (js, css), оптимизация изображений
-export const build = gulp.series(clear, move, gulp.parallel(...task));
+// инициализация
+export const init = gulp.series(
+	gulp.parallel(sprite, move),
+	...tasks
+);
+
+// сжатие файлов (js, css), оптимизация изображений
+export const build = gulp.series(
+	clear,
+	gulp.parallel(sprite, move),
+	...tasks
+);
+
 // разработка
-const dev = gulp.parallel(/*move,*/ sync, ...task, watch);
+const dev = gulp.parallel(
+	sync,
+	watch
+);
 export default dev;
