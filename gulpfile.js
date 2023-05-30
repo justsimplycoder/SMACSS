@@ -7,7 +7,6 @@ import htmlReplace from 'gulp-html-replace';
 import imagemin from 'gulp-imagemin';
 import spritesmith from "gulp.spritesmith";
 import svgSprite from "gulp-svg-sprite";
-import inlineFonts from "gulp-inline-fonts";
 import buffer from "vinyl-buffer";
 import newer from "gulp-newer";
 import stylus from "gulp-stylus";
@@ -174,12 +173,6 @@ function spriteSvg() {
 		})
 }
 
-function fontBase64() {
-	return gulp.src(['dev/lib/fonts/*'])
-		.pipe(inlineFonts({ name: 'NairiNormal' }))
-		.pipe(gulp.dest('dev/stylus/modules/'));
-}
-
 function js() {
 	return (
     gulp
@@ -221,14 +214,11 @@ export function clear() {
 // создание спрайтов png и svg
 export const sprite = gulp.parallel(spritePng, spriteSvg);
 
-// созадние из svg шрифта и преобразование шрифта в base64
-export const font = gulp.parallel(fontBase64);
-
 // перемещение шрифтов и js библиотек
 export const move = gulp.parallel(moveFont, moveJs, moveCss, moveCssModules);
 
 // инициализация
-export const init = gulp.series(clear, gulp.parallel(sprite, font, move));
+export const init = gulp.series(clear, gulp.parallel(sprite, move));
 
 const task = [
 	pugToHtml,
