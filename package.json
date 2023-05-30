@@ -1,7 +1,7 @@
 {
-  "name": "smacss",
+  "name": "SMACSS",
   "version": "1.0.0",
-  "description": "smacss",
+  "description": "Методология SMACSS",
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
@@ -15,17 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dzendev/smacss.git"
+    "url": "https://github.com/justsimplycoder/SMACSS"
   },
   "keywords": [
     "smacss"
   ],
-  "author": "dzendev@gmail.com",
+  "author": "justsimplycoder@gmail.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dzendev/smacss/issues"
+    "url": "https://github.com/justsimplycoder/smacss/issues"
   },
-  "homepage": "https://github.com/dzendev/smacss#readme",
+  "homepage": "https://github.com/justsimplycoder/smacss#readme",
   "devDependencies": {
     "@babel/cli": "^7.12.8",
     "@babel/core": "^7.12.9",
