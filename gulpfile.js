@@ -38,7 +38,6 @@ const breakpoint = {
 function moveFont() {
 	return gulp.src([
 			'dev/lib/fonts/*',
-			'./node_modules/font-awesome/fonts/*',
 			'./node_modules/slick-carousel/slick/fonts/*'
 		])
 		.pipe(newer('build/fonts'))
