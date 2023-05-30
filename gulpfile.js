@@ -47,7 +47,6 @@ async function moveJs() {
 			'./node_modules/jquery/dist/jquery.min.js',
 			'./node_modules/@babel/polyfill/dist/polyfill.min.js',
 			'./node_modules/slick-carousel/slick/slick.min.js',
-			'./dev/lib/js/prism.js'
 		])
 		.pipe(newer('build/js'))
 		.pipe(gulp.dest('build/js'));
@@ -64,7 +63,7 @@ async function moveCssModules() {
 
 async function moveCss() {
 	return gulp.src([
-		'./dev/lib/css/prism.css'
+		'./dev/lib/css/*.css'
 	])
 	.pipe(newer('build/css'))
 	.pipe(gulp.dest('build/css'));
