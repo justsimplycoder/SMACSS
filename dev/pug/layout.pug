@@ -13,6 +13,7 @@ html(lang="ru")
 		link(href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet")
 		link(rel="stylesheet", href="/css/main.css")
 		link(rel="stylesheet", href="/css/swiper-bundle.min.css")
+		link(rel="stylesheet", type="text/css", href="/css/print.css", media="print")
 		// endbuild
 		block title
 			title SMACSS
@@ -40,11 +41,12 @@ html(lang="ru")
 		// /#l-content
 
 		footer#l-footer
-			.l-page-width.b-text-center(style="display:block") Copyright <a href="https://github.com/dzendev/smacss.git">Dzendev GitHub</a>
+			.l-page-width.b-text-center(style="display:block") Copyright <a href="https://github.com/justsimplycoder/SMACSS">justsimplycoder GitHub</a>
 		// /footer#l-footer
 
 		block bottom-script
 			script(src="/js/jquery.min.js")
+			script(src="/js/swiper-bundle.min.js")
 			// build:js
 			script(src="/js/script.js" type="module")
 			// endbuild

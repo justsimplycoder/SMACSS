@@ -95,7 +95,7 @@ function img() {
 }
 
 function stylusToCss() {
-	return gulp.src('dev/stylus/main.styl')
+	return gulp.src(['dev/stylus/main.styl', 'dev/stylus/print.styl'])
 		.pipe(plumberNotifier())
 		.pipe(stylus({ 'include css': true, rawDefine: { ...breakpoint }}))
 		.pipe(pipeIf(env === 'production', uncss({
