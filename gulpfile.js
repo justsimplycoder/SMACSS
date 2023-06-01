@@ -35,7 +35,6 @@ const breakpoint = {
 async function moveFont() {
 	return gulp.src([
 			'dev/lib/fonts/*',
-			'./node_modules/slick-carousel/slick/fonts/*'
 		])
 		.pipe(newer('build/fonts'))
 		.pipe(gulp.dest('build/fonts'));
@@ -46,24 +45,16 @@ async function moveJs() {
 			'dev/lib/js/*.js',
 			'./node_modules/jquery/dist/jquery.min.js',
 			'./node_modules/@babel/polyfill/dist/polyfill.min.js',
-			'./node_modules/slick-carousel/slick/slick.min.js',
+			'./node_modules/swiper/swiper-bundle.min.js'
 		])
 		.pipe(newer('build/js'))
 		.pipe(gulp.dest('build/js'));
 }
 
-async function moveCssModules() {
-	return gulp.src([
-		'./node_modules/slick-carousel/slick/slick.css',
-		'./node_modules/slick-carousel/slick/slick-theme.css'
-	])
-	.pipe(newer('dev/stylus/modules'))
-	.pipe(gulp.dest('dev/stylus/modules'));
-}
-
 async function moveCss() {
 	return gulp.src([
-		'./dev/lib/css/*.css'
+		'./dev/lib/css/*.css',
+		'./node_modules/swiper/swiper-bundle.min.css'
 	])
 	.pipe(newer('build/css'))
 	.pipe(gulp.dest('build/css'));
@@ -215,7 +206,7 @@ export function clear() {
 export const sprite = gulp.parallel(spritePng, spriteSvg);
 
 // перемещение font, js, css
-export const move = gulp.parallel(moveFont, moveJs, moveCss, moveCssModules);
+export const move = gulp.parallel(moveFont, moveJs, moveCss);
 
 const tasks = [
 	pugToHtml,

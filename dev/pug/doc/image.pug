@@ -3,30 +3,18 @@ extends layout.pug
 block content
 	h1 Работа с изображениями
 
-	h2 Слайдер
+	h2 Слайдер swiper
 
 	section
-		.slider.slider-banner
-			.slider-item: img(src="http://placeimg.com/1000/340/any/grayscale", alt="")
-			.slider-item: img(src="http://placeimg.com/1000/340/nature/sepia", alt="")
-			.slider-item: img(src="http://placeimg.com/1000/340/tech", alt="")
-			//- each item in sliderBanner
-			//- 	.slider-item
-			//- 		a(href=item.link): img(src='/img/banner/' + item.nameImg, alt="")
-	section
-		.slider.slider-img
-			.slider-item: img(src="http://placeimg.com/200/100/nature", alt="")
-			.slider-item: img(src="http://placeimg.com/200/100/arch", alt="")
-			.slider-item: img(src="http://placeimg.com/200/100/animals", alt="")
-			.slider-item: img(src="http://placeimg.com/200/100/people", alt="")
-			.slider-item: img(src="http://placeimg.com/200/100/tech", alt="")
-			.slider-item: img(src="http://placeimg.com/200/100/animals/grayscale", alt="")
-			.slider-item: img(src="http://placeimg.com/200/100/arch/grayscale", alt="")
-			.slider-item: img(src="http://placeimg.com/200/100/nature/grayscale", alt="")
-			.slider-item: img(src="http://placeimg.com/200/100/tech/grayscale", alt="")
-			.slider-item: img(src="http://placeimg.com/200/100/animals/sepia", alt="")
-			.slider-item: img(src="http://placeimg.com/200/100/arch/sepia", alt="")
-			.slider-item: img(src="http://placeimg.com/200/100/nature/sepia", alt="")
+		.swiper.l-swiper
+			.swiper-wrapper
+				.swiper-slide: img(src="http://placeimg.com/1000/340/any/grayscale", alt="")
+				.swiper-slide: img(src="http://placeimg.com/1000/340/nature/sepia", alt="")
+				.swiper-slide: img(src="http://placeimg.com/1000/340/tech", alt="")
+			.swiper-pagination
+			.swiper-button-prev
+			.swiper-button-next
+			.swiper-scrollbar
 
 	h2 Вставка изображения из svg спрайта (inline или url)
 	p

@@ -50,53 +50,26 @@
     alertClose.forEach(alertHandler);
   }
 
-  // Слайдеры
-  var slider = $('.slider');
-  // Слайдер баннеров
-  $(slider).closest('.slider-banner').slick({
-    dots: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    speed: 2000,
-    autoplay: true,
-    responsive: [
-      {
-        breakpoint: 480,
-        settings: {
-          arrows: true,
-          dots: false
-        }
-      }
-    ]
+  // Слайдер
+  const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    // scrollbar: {
+    //   el: '.swiper-scrollbar',
+    // },
   });
-  // Слайдер купили на этой недели
-  $(slider).closest('.slider-img').slick({
-    dots: true,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    // arrows: false
-    responsive: [
-      {
-        breakpoint: 1060,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3
-        }
-      },
-      {
-        breakpoint: 769,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-    });
 })(jQuery);
