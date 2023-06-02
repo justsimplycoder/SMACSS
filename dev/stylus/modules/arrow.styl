@@ -2,23 +2,24 @@
   .arrow - модуль стрелка
  -----------------------------------------------------------------*/
 .arrow
-	&:after
-		border: solid black
-		border-width: 0 2px 2px 0
-		padding: 4px
-		content: ''
-		display: inline-block
-		margin-left: 5px
-	&.is-right
-		&:after
-			transform: rotate(-45deg)
-			margin-left: 1px
-	&.is-left
-		&:after
-			transform: rotate(135deg)
-	&.is-up
-		&:after
-			transform: rotate(-135deg)
-	&.is-down
-		&:after
-			transform: rotate(45deg)
+	--size: 10px
+	border-style: solid
+	border-width: 0 calc(var(--size) / 5) calc(var(--size) / 5) 0
+	border-color: inherit;
+	width var(--size)
+	height var(--size)
+	display: inline-block
+	position relative
+	&.t-right
+		transform: rotate(-45deg)
+	&.t-left
+		transform: rotate(135deg)
+		margin-left: calc(var(--size) / 2)
+	&.t-up
+		transform: rotate(-135deg)
+		margin-left: calc(var(--size) / 2)
+		top calc(var(--size) / 3)
+	&.t-down
+		transform: rotate(45deg)
+		margin-left: calc(var(--size) / 2)
+		bottom calc(var(--size) / 3)
