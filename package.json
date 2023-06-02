@@ -60,7 +60,6 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "jquery": "^3.5.1",
     "normalize.css": "^8.0.1",
     "swiper": "^9.3.2"
   }

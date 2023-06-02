@@ -43,7 +43,6 @@ async function moveFont() {
 async function moveJs() {
 	return gulp.src([
 			'dev/lib/js/*.js',
-			'./node_modules/jquery/dist/jquery.min.js',
 			'./node_modules/@babel/polyfill/dist/polyfill.min.js',
 			'./node_modules/swiper/swiper-bundle.min.js'
 		])

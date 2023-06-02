@@ -2,7 +2,7 @@
 
 // test();
 
-(function($) {
+(function() {
   // Модуль .hamburger
   const hamburger = document.querySelector('.hamburger');
   const nav = document.querySelector('.nav');
@@ -72,4 +72,4 @@
     //   el: '.swiper-scrollbar',
     // },
   });
-})(jQuery);
+})();
