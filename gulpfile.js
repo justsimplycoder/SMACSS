@@ -6,7 +6,6 @@ import plumberNotifier from "gulp-plumber-notifier";
 import htmlReplace from 'gulp-html-replace';
 import imagemin from 'gulp-imagemin';
 import spritesmith from "gulp.spritesmith";
-import svgSprite from "gulp-svg-sprite";
 import buffer from "vinyl-buffer";
 import newer from "gulp-newer";
 import stylus from "gulp-stylus";
@@ -128,41 +127,6 @@ async function spritePng() {
 			.pipe(gulp.dest('dev/stylus/modules'));
 }
 
-async function spriteSvg() {
-	return gulp.src('dev/img/iconsvg/*.svg')
-		.pipe(svgSprite({
-			shape: {
-				id: {
-					generator: function(name, file) {
-						return 'iconsvg-' + file.stem;
-					}
-				},
-				dimension: {
-					maxWidth: 32,
-					maxHeight: 32
-				},
-				spacing: {
-					padding: 0,
-				}
-			},
-			mode: {
-				inline: true,
-				symbol: true
-			},
-		}))
-		.on('end', () => {
-			gulp.src('dev/img/sprite/symbol/svg/sprite.symbol.svg')
-				.pipe(rename({
-					basename: "iconsvg",
-					extname: ".svg"
-				}))
-				.pipe(gulp.dest('dev/img/sprite'))
-		})
-		.on('end', () => {
-			del(['dev/img/sprite/symbol'])
-		})
-}
-
 function js() {
 	return (
 		gulp
@@ -201,9 +165,6 @@ export function clear() {
 	return del(['build/*']);
 }
 
-// создание спрайтов png и svg
-export const sprite = gulp.parallel(spritePng, spriteSvg);
-
 // перемещение font, js, css
 export const move = gulp.parallel(moveFont, moveJs, moveCss);
 
@@ -216,14 +177,14 @@ const tasks = [
 
 // инициализация
 export const init = gulp.series(
-	gulp.parallel(sprite, move),
+	gulp.parallel(spritePng, move),
 	...tasks
 );
 
 // сжатие файлов (js, css), оптимизация изображений
 export const build = gulp.series(
 	clear,
-	gulp.parallel(sprite, move),
+	gulp.parallel(spritePng, move),
 	...tasks
 );
 

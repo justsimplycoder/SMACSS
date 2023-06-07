@@ -9,8 +9,6 @@
     "build": "set NODE_ENV=production&&gulp build",
     "init": "gulp init",
     "move": "gulp move",
-    "font": "gulp font",
-    "sprite": "gulp sprite",
     "clear": "gulp clear"
   },
   "repository": {
@@ -50,7 +48,6 @@
     "gulp-rewrite-image-path": "0.0.4",
     "gulp-sass": "^5.1.0",
     "gulp-stylus": "^2.7.0",
-    "gulp-svg-sprite": "^2.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-uncss-sp": "0.0.1",
     "gulp.spritesmith": "^6.11.0",
