@@ -8,11 +8,11 @@ html(lang="ru")
 		meta(http-equiv="X-UA-Compatible", content="IE=edge")
 		meta(name="description", content="")
 		meta(name="viewport", content="width=device-width,initial-scale=1")
-		// build:css
 		link(rel="preconnect" href="https://fonts.gstatic.com")
 		link(href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet")
-		link(rel="stylesheet", href="/css/main.css")
 		link(rel="stylesheet", href="/css/swiper-bundle.min.css")
+		// build:css
+		link(rel="stylesheet", href="/css/main.css")
 		link(rel="stylesheet", type="text/css", href="/css/print.css", media="print")
 		// endbuild
 		block title
@@ -67,6 +67,6 @@ html(lang="ru")
 
 		block bottom-script
 			script(src="/js/swiper-bundle.min.js")
-			// build:js
-			script(src="/js/script.js")
+			// build:js_bottom
+			script(src="/js/script.js", type="module")
 			// endbuild

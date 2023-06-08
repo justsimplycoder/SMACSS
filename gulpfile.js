@@ -72,9 +72,8 @@ function pugToHtml() {
 		.pipe(plumberNotifier())
 		.pipe(pug({ pretty: true, locals: breakpoint }))
 		.pipe(pipeIf(env === 'production', htmlReplace({
-			css: 'css/style.min.css',
-			js_app: 'js/app.min.js',
-			js_script: 'js/script.min.js'
+			css: '/css/main.min.css',
+			js_bottom: '/js/script.min.js'
 		})))
 		.pipe(gulp.dest('build'))
 		.pipe(browserSync.reload({ stream: true }));
@@ -97,16 +96,17 @@ function stylusToCss() {
 		.pipe(plumberNotifier())
 		.pipe(stylus({ 'include css': true, rawDefine: { ...breakpoint }}))
 		.pipe(pipeIf(env === 'production', uncss({
-				// html: ['./build/index.html']
 				html: glob.sync('./build/**/*.html')
 		})))
 		.pipe(pipeIf(env === 'production', autoprefixer({
 			cascade: false,
-			grid: "autoplace" // для поддержки grid в IE11
+			// grid: "autoplace" // для поддержки grid в IE11
 		})))
 		.pipe(pipeIf(env === 'production', gcmq()))
 		.pipe(pipeIf(env === 'production', cssnano()))
-		.pipe(pipeIf(env === 'production', rename({suffix: '.min'})))
+		.pipe(pipeIf(env === 'production', rename({
+			suffix: '.min'
+		})))
 		.pipe(gulp.dest('build/css'))
 		.pipe(browserSync.reload({ stream: true }));
 }
@@ -127,7 +127,7 @@ async function spritePng() {
 			.pipe(gulp.dest('dev/stylus/modules'));
 }
 
-function js() {
+function jsDev() {
 	return (
 		gulp
 			.src("dev/js/**/*.js", { sourcemaps: true })
@@ -135,20 +135,31 @@ function js() {
 			.pipe(babel({
 				"presets": [["@babel/preset-env", { modules: false }]],
 			}))
-			// .pipe(pipeIf(env === "production", webpack({
-			// 	entry: {
-			// 		// app: ['babel-polyfill'],
-			// 		app: './dev/js/script.js',
-			// 		script: './dev/js/script.js'
-			// 	},
-			// 	mode: env,
-			// 	output: {
-			// 		filename: '[name].js',
-			// 	}
-			// })))
 			.pipe(pipeIf(env === "production", uglify()))
 			.pipe(pipeIf(env === "production", rename({ suffix: ".min" })))
-			.pipe(gulp.dest("build/js", { sourcemaps: true }))
+			.pipe(gulp.dest("build/js"))
+			.pipe(browserSync.reload({ stream: true }))
+	);
+}
+
+function jsBuild() {
+	return (
+		gulp
+			.src("dev/js/script.js")
+			.pipe(
+				webpack({
+					// entry: {
+					// 	// app: ['babel-polyfill'],
+					// 	app: './dev/js/script.js',
+					// 	script: './dev/js/script.js'
+					// },
+					mode: env,
+					output: {
+						filename: 'script.min.js',
+					}
+				})
+			)
+			.pipe(gulp.dest('build/js'))
 			.pipe(browserSync.reload({ stream: true }))
 	);
 }
@@ -157,7 +168,7 @@ function watch() {
 	gulp.watch('dev/pug/**/*.pug', pugToHtml);
 	gulp.watch('dev/img/**/*.*', img);
 	gulp.watch('dev/stylus/**/*.styl', stylusToCss);
-	gulp.watch('dev/js/**/*.js', js);
+	gulp.watch('dev/js/**/*.js', jsDev);
 }
 
 // очистка папки build
@@ -168,24 +179,24 @@ export function clear() {
 // перемещение font, js, css
 export const move = gulp.parallel(moveFont, moveJs, moveCss);
 
-const tasks = [
-	pugToHtml,
-	img,
-	stylusToCss,
-	js
-];
-
 // инициализация
 export const init = gulp.series(
 	gulp.parallel(spritePng, move),
-	...tasks
+	jsDev,
+	stylusToCss,
+	img,
+	pugToHtml
 );
 
 // сжатие файлов (js, css), оптимизация изображений
 export const build = gulp.series(
 	clear,
 	gulp.parallel(spritePng, move),
-	...tasks
+	jsBuild,
+	img,
+	pugToHtml,
+	stylusToCss,
+	sync
 );
 
 // разработка
