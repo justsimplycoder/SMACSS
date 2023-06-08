@@ -68,7 +68,7 @@ function sync() {
 }
 
 function pugToHtml() {
-	return gulp.src(['dev/pug/**/*.pug', '!dev/pug/layout.pug', '!dev/pug/_*.pug'])
+	return gulp.src(['dev/pug/**/*.pug', '!dev/pug/**/layout.pug', '!dev/pug/**/_*.pug'])
 		.pipe(plumberNotifier())
 		.pipe(pug({ pretty: true, locals: breakpoint }))
 		.pipe(pipeIf(env === 'production', htmlReplace({
